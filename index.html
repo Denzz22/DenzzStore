@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Denzz Store – Joki Fish It</title>
+
+<style>
+*{box-sizing:border-box;font-family:'Arial Rounded MT Bold',Arial,sans-serif}
+body{
+  margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;
+  background:linear-gradient(135deg,#e0f2fe,#f0f9ff);
+}
+.poster{
+  width:390px;max-width:95%;padding:20px;border-radius:26px;
+  background:linear-gradient(180deg,#f8fafc,#e0f2fe);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+.title{text-align:center;margin-bottom:14px}
+.title h1{
+  margin:0;padding:12px 18px;border-radius:30px;
+  background:linear-gradient(90deg,#bae6fd,#e0f2fe);
+  color:#0f172a;font-size:26px
+}
+.subtitle{
+  margin-top:8px;display:inline-block;padding:6px 16px;border-radius:22px;
+  background:#f0f9ff;font-weight:bold;color:#334155
+}
+.grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px
+}
+.section{text-align:center;font-weight:bold;color:#334155;margin-bottom:6px}
+a.btn{
+  display:block;text-decoration:none;color:#1e293b;
+  background:linear-gradient(180deg,#ffffff,#f1f5f9);
+  border-radius:22px;padding:10px 12px;margin-bottom:12px;
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
+  text-align:center
+}
+.item{font-size:15px;font-weight:bold}
+.price{
+  margin-top:6px;display:inline-block;padding:4px 14px;border-radius:999px;
+  background:#e0f2fe;color:#0369a1;font-size:13px;font-weight:bold
+}
+.center{grid-column:1/3;text-align:center;margin-top:4px}
+
+/* POPUP */
+.popup{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.4);
+  justify-content:center;align-items:center;
+}
+.popup-box{
+  background:#f8fafc;padding:20px;border-radius:20px;
+  width:300px;text-align:center
+}
+.popup select{
+  width:100%;padding:8px;border-radius:10px;margin:10px 0
+}
+.popup button{
+  width:100%;padding:10px;border:none;border-radius:14px;
+  background:#38bdf8;font-weight:bold;cursor:pointer
+}
+.close{
+  margin-top:8px;font-size:13px;color:#64748b;cursor:pointer
+}
+
+.order{text-align:center;margin-top:14px}
+.order a{
+  display:inline-block;text-decoration:none;
+  background:linear-gradient(90deg,#22d3ee,#67e8f9);
+  color:#0f172a;font-weight:bold;padding:12px 20px;border-radius:26px;
+}
+</style>
+</head>
+
+<body>
+<div class="poster">
+
+<div class="title">
+<h1>DENZZ STORE</h1>
+<div class="subtitle">JOKI FISH IT • AMAN • TERPERCAYA</div>
+</div>
+
+<div class="grid">
+
+<!-- ROD -->
+<div>
+<div class="section">JOKI ROD</div>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20hazmat%20rod"><div class="item">HAZMAT ROD</div><div class="price">10K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20ares%20rod"><div class="item">ARES ROD</div><div class="price">20K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20angler%20rod"><div class="item">ANGLER ROD</div><div class="price">35K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20bamboo%20rod"><div class="item">BAMBOO ROD</div><div class="price">40K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20ghostfin%20rod"><div class="item">GHOSTFIN ROD</div><div class="price">60K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20element%20rod"><div class="item">ELEMENT ROD</div><div class="price">120K</div></a>
+</div>
+
+<!-- BAIT -->
+<div>
+<div class="section">JOKI BOOBERS</div>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20chroma%20bait"><div class="item">CHROMA BAIT</div><div class="price">2K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20dark%20matter%20bait"><div class="item">DARK MATTER BAIT</div><div class="price">5K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20corrupt%20bait"><div class="item">CORRUPT BAIT</div><div class="price">10K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20aether%20bait"><div class="item">AETHER BAIT</div><div class="price">15K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20floral%20bait"><div class="item">FLORAL BAIT</div><div class="price">25K</div></a>
+<a class="btn" href="https://wa.me/6285738846847?text=permisi%20saya%20mau%20joki%20singularity%20bait"><div class="item">SINGULARITY BAIT</div><div class="price">35K</div></a>
+</div>
+
+<!-- JOKI HARIAN -->
+<div class="center">
+<div class="section">JOKI HARIAN</div>
+<a class="btn" onclick="openPopup()">
+<div class="item">PILIH HARI</div>
+<div class="price">5K / HARI</div>
+</a>
+</div>
+
+</div>
+
+<div class="order">
+<p style="font-size:13px;color:#475569">
+Joki Denzz Store <b>aman</b>, <b>tanpa cheat</b>, dan <b>privasi terjaga</b>.
+</p>
+<a href="https://wa.me/6285738846847">ORDER DISINI</a>
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<b>Pilih Jumlah Hari</b>
+<select id="hari"></select>
+<button onclick="pesan()">Pesan via WhatsApp</button>
+<div class="close" onclick="closePopup()">Batal</div>
+</div>
+</div>
+
+<script>
+const select = document.getElementById("hari");
+for(let i=1;i<=100;i++){
+  select.innerHTML += `<option value="${i}">${i} Hari</option>`;
+}
+
+function openPopup(){ document.getElementById("popup").style.display="flex"; }
+function closePopup(){ document.getElementById("popup").style.display="none"; }
+
+function pesan(){
+  const h = select.value;
+  const wa = "6285738846847";
+  const msg = `permisi saya mau joki harian ${h} hari`;
+  window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,"_blank");
+}
+</script>
+
+</body>
+</html>
