@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denzz Store | Premium Game Joki</title>
+    
+    <meta name="description" content="Jasa Joki Game Fishing Premium. Joki Rod, Baits, dan Harian dengan proses cepat dan aman.">
+    <meta name="theme-color" content="#7000ff">
+
+    <link rel="icon" type="image/jpg" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Denzz Store Game Store",
+      "url": "https://ngoprek.xyz/ig",
+      "logo": "https://ngoprek.xyz/u/r/rs.jpg"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-dark: #030305;
+            --bg-surface: #0a0a0c;
+            --primary: #7000ff;
+            --primary-glow: rgba(112, 0, 255, 0.5);
+            --secondary: #00c3ff;
+            --accent: #ff0055;
+            --gold: #fbbf24;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            
+            /* Category Colors */
+            --rod-color: #ff0055;     /* Merah Pink untuk Rod */
+            --bait-color: #25D366;    /* Hijau untuk Bait */
+            --daily-color: #00c3ff;   /* Biru untuk Daily */
+
+            /* Glass Effect */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            --blur: blur(12px);
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND FX --- */
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+        
+        .ambient-light {
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            top: -100px; left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4, .brand-font { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary), var(--text-main), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 80px 0; position: relative; }
+
+        /* --- NAVBAR (FLOATING) --- */
+        header {
+            position: fixed; top: 20px; left: 0; right: 0; z-index: 1000;
+            display: flex; justify-content: center;
+            transition: 0.3s;
+        }
+        
+        .navbar-card {
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: var(--glass-border);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            width: 90%;
+            max-width: 1200px;
+            justify-content: space-between;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 900; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s;
+        }
+        .nav-links a:hover { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding-top: 140px; position: relative; overflow: hidden;
+        }
+
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 25px; text-transform: uppercase; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
+
+        .btn {
+            padding: 14px 35px; border-radius: 50px; font-weight: 700; text-decoration: none;
+            transition: 0.3s; text-transform: uppercase; font-size: 0.9rem; border: none; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 0 20px rgba(112, 0, 255, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(112, 0, 255, 0.6); }
+
+        /* --- CATEGORY TABS --- */
+        .category-wrapper {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;
+            margin-bottom: 60px; position: sticky; top: 100px; z-index: 90;
+            padding: 10px 0; background: linear-gradient(to bottom, var(--bg-dark), transparent);
+        }
+        .cat-chip {
+            padding: 10px 20px; background: rgba(20, 20, 25, 0.8); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+            font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(10px);
+        }
+        .cat-chip:hover, .cat-chip.active { background: rgba(255, 255, 255, 0.1); color: white; border-color: var(--secondary); transform: scale(1.05); }
+
+        /* --- CARDS & GRID --- */
+        .service-group-title {
+            display: flex; align-items: center; gap: 15px; margin: 40px 0 20px; padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1); font-family: 'Orbitron'; color: white;
+        }
+
+        .grid-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;
+        }
+
+        .card {
+            background: var(--glass-bg); border: var(--glass-border); border-radius: 20px; padding: 25px;
+            position: relative; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-badge {
+            position: absolute; top: 15px; right: 15px; padding: 4px 10px; border-radius: 8px;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; z-index: 2; color: #000;
+        }
+        .bg-gold { background: var(--gold); }
+        .bg-accent { background: var(--accent); color: white; }
+        .bg-blue { background: var(--secondary); }
+        .bg-green { background: #25D366; color: white; }
+
+        .card h4 { font-size: 1.2rem; margin-bottom: 10px; color: white; font-family: 'Orbitron'; }
+        
+        .price { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px; display: block; }
+        .old-price { font-size: 0.9rem; text-decoration: line-through; color: #666; margin-right: 8px; }
+
+        .desc-text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; min-height: 40px; }
+        
+        .feature-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; }
+        .tag { font-size: 0.7rem; padding: 3px 8px; background: rgba(255,255,255,0.05); border-radius: 4px; color: #ccc; }
+
+        .btn-card {
+            width: 100%; padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+            color: white; text-align: center; border-radius: 10px; text-decoration: none; font-weight: 700;
+            transition: 0.3s; margin-top: auto;
+        }
+        .btn-card:hover { background: white; color: black; }
+        
+        /* Platform Specific Colors */
+        .card.rod:hover { border-color: var(--rod-color); } .card.rod:hover .btn-card { background: var(--rod-color); border:none; color:white;}
+        .card.bait:hover { border-color: var(--bait-color); } .card.bait:hover .btn-card { background: var(--bait-color); border:none; color:white;}
+        .card.daily:hover { border-color: var(--daily-color); } .card.daily:hover .btn-card { background: var(--daily-color); border:none; color:white;}
+
+        /* --- TERMINAL INFO --- */
+        .terminal-box {
+            background: #0f0f12; border: 1px solid #333; border-radius: 10px; overflow: hidden;
+            font-family: 'Courier New', monospace; margin-top: 50px;
+        }
+        .terminal-header { background: #1a1a1f; padding: 10px 15px; display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #ff5f56; } .dot.yellow { background: #ffbd2e; } .dot.green { background: #27c93f; }
+        .terminal-body { padding: 30px; color: #d4d4d4; font-size: 0.95rem; }
+
+        /* --- TESTIMONIALS --- */
+        .scroller { overflow: hidden; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .scroller-inner { display: flex; gap: 20px; padding: 20px 0; width: max-content; animation: scroll 40s linear infinite; }
+        .scroller-inner:hover { animation-play-state: paused; }
+        .testi-item { width: 300px; background: #111; padding: 20px; border-radius: 15px; border: 1px solid #222; overflow: hidden;}
+        @keyframes scroll { to { transform: translate(calc(-50% - 10px)); } }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .navbar-card { width: 95%; padding: 12px 20px; }
+            .nav-links {
+                position: absolute; top: 110%; left: 0; width: 100%; background: #0f0f12; border: 1px solid #333;
+                border-radius: 20px; flex-direction: column; padding: 20px; gap: 15px; display: none;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .cat-chip { font-size: 0.8rem; padding: 8px 12px; }
+        }
+
+        /* --- DESKTOP MODE ALERT --- */
+        #mobile-alert {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: none; /* Default hidden */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .alert-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 0 50px rgba(112, 0, 255, 0.2);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .alert-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00c3ff, #7000ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .alert-content h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .alert-content p {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .btn-alert {
+            background: linear-gradient(45deg, #7000ff, #00c3ff);
+            border: none;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(112, 0, 255, 0.3);
+        }
+
+        .btn-alert:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(112, 0, 255, 0.5);
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Tampilkan hanya di HP (lebar < 768px) */
+        @media (max-width: 768px) {
+            #mobile-alert { display: flex; }
+        }
+
+        /* --- MARKETING LOGO STYLE --- */
+        .hero-logo-container {
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cyber-logo-badge {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(112, 0, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .cyber-logo-badge:hover {
+            transform: scale(1.02);
+            border-color: rgba(112, 0, 255, 0.4);
+            box-shadow: 0 0 50px rgba(112, 0, 255, 0.3);
+        }
+
+        .cyber-logo-badge::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: skewX(-25deg);
+            animation: shiny 5s infinite ease-in-out;
+        }
+        @keyframes shiny {
+            0% { left: -150%; }
+            20%, 100% { left: 150%; }
+        }
+
+        .marketing-logo {
+            max-height: 400px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+        }
+
+        @media (max-width: 768px) {
+            .marketing-logo { max-height: 60px; }
+            .cyber-logo-badge { padding: 12px 20px; }
+        }
+
+        /* --- CYBER INTRO STYLES --- */
+        #cyber-intro {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #cyber-intro.loaded {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .intro-content {
+            text-align: center;
+            width: 300px;
+        }
+
+        .glitch-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+            position: relative;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+        }
+        .glitch-logo::before, .glitch-logo::after {
+            content: attr(data-text);
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+        }
+        .glitch-logo::before {
+            left: 2px; text-shadow: -1px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-logo::after {
+            left: -2px; text-shadow: -1px 0 #00fff9; clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        .loading-bar {
+            width: 100%; height: 4px;
+            background: #222;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .progress {
+            width: 0%; height: 100%;
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+            transition: width 0.1s;
+        }
+
+        .terminal-text {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            min-height: 20px;
+        }
+
+        .status-code {
+            display: flex; justify-content: space-between;
+            font-size: 0.7rem; color: #555; margin-top: 10px;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(30px, 9999px, 10px, 0); }
+            20% { clip: rect(80px, 9999px, 90px, 0); }
+            40% { clip: rect(10px, 9999px, 50px, 0); }
+            60% { clip: rect(60px, 9999px, 20px, 0); }
+            80% { clip: rect(20px, 9999px, 70px, 0); }
+            100% { clip: rect(90px, 9999px, 30px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(10px, 9999px, 60px, 0); }
+            100% { clip: rect(70px, 9999px, 20px, 0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="cyber-intro">
+        <div class="intro-content">
+            <div class="glitch-logo" data-text="DENZZ STORE">WELCOME</div>
+            <div class="terminal-loader">
+                <div class="terminal-text" id="term-text">> INITIALIZING SYSTEM...</div>
+                <div class="loading-bar">
+                    <div class="progress" id="intro-progress"></div>
+                </div>
+                <div class="status-code">
+                    <span>SECURE CON: <strong style="color:#00ff88">TRUE</strong></span>
+                    <span>PING: <strong style="color:#00c3ff">12ms</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="mobile-alert">
+    <div class="alert-content">
+        <div class="alert-icon"><i class="fas fa-desktop"></i></div>
+        <h3>SARAN TAMPILAN</h3>
+        <p>Website ini didesain untuk pengalaman visual terbaik di Desktop/Laptop. <br><br>Jika menggunakan HP, kami sarankan aktifkan <strong>"Situs Desktop"</strong> di browser Anda atau putar layar ke Landscape.</p>
+        <button class="btn-alert" onclick="closeAlert()">Lanjut Saja</button>
+    </div>
+</div>
+
+    <div class="grid-bg"></div>
+    <div class="ambient-light"></div>
+
+    <header>
+        <div class="navbar-card">
+            <a href="#" class="logo">DENZZ<span>STORE</span></a>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="nav-ul">
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#packages">Paket</a></li>
+                <li><a href="#testimonials">Ulasan</a></li>
+                <li><a href="#info">Info</a></li>
+                <li><a href="#contact">Kontak</a></li>
+                <li><a href="https://ngoprek.xyz/contact">Support Admin</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container" data-aos="zoom-in">
+            
+            <div class="hero-logo-container">
+                <div class="cyber-logo-badge">
+                    <img src="https://ngoprek.xyz/u/r/denz.jpg" alt="Official Partner" class="marketing-logo">
+                </div>
+            </div>
+            <h1>Premium <br><span class="gradient-text">GAME JOKI STORE</span></h1>
+            <p>Dapatkan Rod Langka, Umpan Terbaik, dan Layanan Joki Harian dengan cepat dan aman. Tingkatkan progress game Anda sekarang.</p>
+            <a href="#packages" class="btn btn-primary">Lihat Daftar Item <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <section id="packages">
+        <div class="container">
+            <div class="category-wrapper" data-aos="fade-up">
+                <a href="#cat-rod" class="cat-chip"><i class="fa-solid fa-wand-sparkles"></i> Joki Rod</a>
+                <a href="#cat-bait" class="cat-chip"><i class="fa-solid fa-worm"></i> Joki Baits</a>
+                <a href="#cat-daily" class="cat-chip"><i class="fa-solid fa-calendar-check"></i> Joki Harian</a>
+            </div>
+
+            <div id="cat-rod">
+                <div class="service-group-title" style="color: var(--rod-color);">
+                    <i class="fa-solid fa-fish-fins fa-2x"></i> <h3>DATA JOKI ROD (PANCINGAN)</h3>
+                </div>
+                <div class="grid-container">
+                    
+                    <div class="card rod" data-aos="fade-up">
+                        <div class="card-badge bg-accent">BEST DEAL</div>
+                        <h4>HAZMAT ROD</h4>
+                        <span class="price">Rp 10.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-wand-sparkles"></i> Luck: 380℅ | Speed: 32℅ | Weight: 300K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki HAZMAT ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20HAZMAT%20ROD%20seharga%2010K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod" data-aos="fade-up">
+                        <h4>ARES ROD</h4>
+                        <span class="price">Rp 20.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-brands fa-hotjar"></i> Luck: 455℅. | Speed: 56℅ | Weight: 400K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki ARES ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20ARES%20ROD%20seharga%2020K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod" data-aos="fade-up">
+                        <h4>ANGLER ROD</h4>
+                        <span class="price">Rp 35.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-fish-fins"></i> Luck: 530℅. | Speed: 71℅ | Weight: 500K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki ANGLER ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20ANGLER%20ROD%20seharga%2035K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod" data-aos="fade-up">
+                        <h4>BAMBOO ROD</h4>
+                        <span class="price">Rp 40.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-leaf"></i> Luck: 760℅. | Speed: 98℅ | Weight: 500K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki BAMBOO ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20BAMBOO%20ROD%20seharga%2040K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod" data-aos="fade-up">
+                        <div class="card-badge bg-blue">POPULER</div>
+                        <h4>GHOSTFIN ROD</h4>
+                        <span class="price">Rp 60.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-ghost"></i> Luck: 610℅. | Speed: 118℅ | Weight: 600K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki GHOSTFIN ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20GHOSTFIN%20ROD%20seharga%2060K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod" data-aos="fade-up" style="border-color: var(--primary);">
+                        <div class="card-badge bg-gold">LEGENDARY</div>
+                        <h4>ELEMENT ROD</h4>
+                        <span class="price">Rp 120.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-bolt"></i> Luck: 1111℅. | Speed: 130℅ | Weight: 900K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki ELEMENT ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20ELEMENT%20ROD%20seharga%20120K.%20Masih%20ready%3F" target="_blank" class="btn-card" style="background:var(--primary);">Beli Rod</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="cat-bait">
+                <div class="service-group-title" style="color: var(--bait-color);">
+                    <i class="fa-solid fa-worm fa-2x"></i> <h3>DATA JOKI BAITS (UMPAN)</h3>
+                </div>
+                <div class="grid-container">
+                    
+                    <div class="card bait" data-aos="fade-up">
+                        <h4>CHROMA BAIT</h4>
+                        <span class="price">Rp 2.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-worm"></i> Luck: 100℅</span></div>
+                                                <p class="desc-text">Jika kamu membeli jasa joki CHROMA BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20CHROMA%20BAIT%20seharga%202K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait" data-aos="fade-up">
+                        <h4>DARK MATTER BAIT</h4>
+                        <span class="price">Rp 5.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-moon"></i> Luck: 170℅. | Speed: 5℅ | SHINY CHANCE 5℅</span></div>
+                                                <p class="desc-text">Jika kamu membeli jasa joki DARK MATTER BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20DARK%20MATTER%20seharga%205K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait" data-aos="fade-up">
+                        <h4>CORRUPT BAIT</h4>
+                        <span class="price">Rp 10.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-skull"></i> Luck: 220℅. | MUTATION CHANCE: 10℅ | SHINY CHANCE: 10℅</span></div>
+                                                <p class="desc-text">Jika kamu membeli jasa joki CORRUPT BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20CORRUPT%20BAIT%20seharga%2010K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait" data-aos="fade-up">
+                        <h4>AETHER BAIT</h4>
+                        <span class="price">Rp 15.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-wind"></i> Luck: 260℅. | MUTATION CHANCE: 15℅ | SHINY CHANCE: 5℅</span></div>
+                                                <p class="desc-text">Jika kamu membeli jasa joki ATHER BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20AETHER%20BAIT%20seharga%2015K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait" data-aos="fade-up">
+                        <h4>FLORAL BAIT</h4>
+                        <span class="price">Rp 25.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-brands fa-pagelines"></i> Luck: 320℅. | MUTATION MULTIPL: x2.4</span></div>
+                                                <p class="desc-text">Jika kamu membeli jasa joki FLORAL BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20FLORAL%20BAIT%20seharga%2025K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait" data-aos="fade-up" style="border-color: var(--bait-color);">
+                        <div class="card-badge bg-gold">MYTHICAL</div>
+                        <h4>SINGULARITY BAIT</h4>
+                        <span class="price">Rp 35.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-circle-nodes"></i> Luck: 380℅. | MUTATION CHANCE: 20℅</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki SINGULARITY BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya. </p><center></center>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20beli%20SINGULARITY%20BAIT%20seharga%2035K" target="_blank" class="btn-card" style="background:var(--bait-color);">Beli Umpan</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="cat-daily">
+                <div class="service-group-title" style="color: var(--daily-color);">
+                    <i class="fa-solid fa-calendar-days fa-2x"></i> <h3>DATA JOKI HARIAN</h3>
+                </div>
+                <div class="grid-container">
+                    <div class="card daily" data-aos="fade-up" style="grid-column: 1/-1; max-width: 500px; margin: 0 auto;">
+                        <div class="card-badge bg-blue">LAYANAN</div>
+                        <h4>JOKI GRINDING HARIAN</h4>
+                        <span class="price">Rp 5.000 <span style="font-size:1rem; color:#999; font-weight:400;">/ Hari</span></span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fas fa-check"></i> Full Farming</span>
+                            <span class="tag"><i class="fas fa-bolt"></i> Terpercaya</span>
+                        </div>
+                        <p class="desc-text">Jasa joki grinding harian. Kami mainkan akunmu, kamu tinggal terima beres.</p>
+                        <a href="https://wa.me/6285738846847?text=Halo%20Admin%2C%20saya%20mau%20order%20JOKI%20HARIAN%20(5K/Hari).%20Gimana%20prosedurnya%3F" target="_blank" class="btn-card">Order Joki Harian</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title" style="text-align: center; margin-bottom: 40px;">
+                <h3 class="brand-font">KATA <span class="gradient-text">PLAYER</span></h3>
+            </div>
+            <div class="scroller">
+                <div class="scroller-inner">
+                    
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white;">wanzz</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Element Rod nya asli OP parah! Proses trade cepet banget gak pake lama."</p>
+                    </div>
+
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white;">ucup selalu always ganteng</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Pake jasa joki harian worth it banget, akun makin GG tanpa ribet."</p>
+                    </div>
+
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white;">all cool bngt</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Harga umpan Singularity disini paling murah dibanding store sebelah. Mantap min."</p>
+                    </div>
+
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white;">daren</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Amanah 100%. Data aman, item masuk sesuai pesanan. Next order lagi Ghostfin."</p>
+                    </div>
+
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white;">kalz(jokowi)</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Pelayanan ramah banget, fast respon adminnya. Recommended seller!"</p>
+                    </div>
+
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white;">kepindahnarikmaja</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Mantap jiwa, proses kilat harga bersahabat. Sukses terus Denzz Store."</p>
+                    </div>
+
+                    <div class="testi-item">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <strong style="color:white; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:180px;">cantikaimup54kcaughtsudhmsuksirkel1/4m</strong>
+                            <div style="color:var(--gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <p style="color:#aaa; font-size:0.9rem;">"Kualitas joki nomor satu, ga nyesel order disini. Top markotop!"</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="container">
+            <div class="section-title" style="text-align: center; margin-bottom: 20px;">
+                <h3 class="brand-font">INFO & <span class="gradient-text">ATURAN</span></h3>
+            </div>
+            
+            <div class="terminal-box" data-aos="zoom-in-up">
+                <div class="terminal-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span style="margin-left: 10px; color: #666; font-size: 12px;">denzz-store-system</span>
+                </div>
+                <div class="terminal-body">
+                    <p style="margin-bottom: 15px;"><strong>> PROSES TRANSAKSI:</strong> Via Trade in-game atau Login Akun (untuk Joki Harian).</p>
+                    <p style="margin-bottom: 15px;"><strong>> KEAMANAN DATA:</strong> Kami menjamin 100% keamanan data akun anda selama proses joki berlangsung.</p>
+                    
+                    <hr style="border-color: #333; margin: 20px 0;">
+                    
+                    <h4 style="color: var(--accent); margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> DISCLAIMER PENTING</h4>
+                    <p>Harap matikan verifikasi 2 langkah (2FA) sementara jika memesan Joki Harian agar admin bisa login dengan cepat. Untuk pembelian Item/Rod, pastikan level akun sudah memenuhi syarat Trading.</p>
+                    <br>
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px;">
+                        <strong>STATUS SERVER:</strong><br>
+                        • Trade System: <span style="color: #27c93f;">ONLINE</span><br>
+                        • Joki Slot: <span style="color: #27c93f;">AVAILABLE</span><br>
+                        ---------------------------------<br>
+                        Jika ada kendala login atau maintenance game, waktu pengerjaan joki akan disesuaikan (pause time).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center;">
+        <div class="container" data-aos="fade-up">
+             <div class="card" style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, rgba(112, 0, 255, 0.2), rgba(0, 195, 255, 0.1));">
+                <h2 class="brand-font">TINGKATKAN <span class="gradient-text">AKUN GAME KAMU!</span></h2>
+                <p style="margin: 20px 0 40px; color: #ddd;">Jangan buang waktu grinding manual. Dapatkan item impian dan level up lebih cepat bersama kami.</p>
+                <a href="https://wa.me/6285738846847" target="_blank" class="btn btn-primary" style="background: #25D366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Chat Admin Sekarang!
+                </a>
+                <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">Mau tanya-tanya stock dulu? Gas langsung chat aja! 😉</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: black; padding: 40px 0; text-align: center; border-top: 1px solid #222; margin-top: 50px;">
+        <div class="container">
+            <a href="#" class="logo" style="justify-content: center; margin-bottom: 20px;">DENZZ<span>STORE</span></a>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2025 Denzz Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // Mobile Menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navUl = document.getElementById('nav-ul');
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Fungsi menutup alert
+        function closeAlert() {
+            const alertBox = document.getElementById('mobile-alert');
+            alertBox.style.opacity = '0';
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 300); // Menunggu animasi fade out
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const intro = document.getElementById('cyber-intro');
+            const progress = document.getElementById('intro-progress');
+            const textTerm = document.getElementById('term-text');
+            
+            // Teks terminal sapaan selamat datang (GAME EDITION)
+            const logs = [
+                "> SYSTEM STARTUP...",
+                "> CONNECTING TO GAME SERVER...",
+                "> LOADING INVENTORY...",
+                "> CHECKING ITEM STOCK...",
+                "> WELCOME TO DENZZ STORE."
+            ];
+
+            let step = 0;
+            
+            // Fungsi ganti teks
+            const logInterval = setInterval(() => {
+                if(step < logs.length) {
+                    textTerm.innerText = logs[step];
+                    // Efek kedip teks biar kayak ngetik
+                    textTerm.style.opacity = 1;
+                    setTimeout(() => { textTerm.style.opacity = 0.5; }, 100);
+                    setTimeout(() => { textTerm.style.opacity = 1; }, 200);
+                    step++;
+                }
+            }, 500); // Ganti teks setiap 0.5 detik
+
+            // Fungsi Loading Bar
+            let width = 0;
+            const barInterval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(barInterval);
+                    clearInterval(logInterval);
+                    
+                    // Selesai Loading -> Buka Website
+                    setTimeout(() => {
+                        intro.classList.add('loaded'); 
+                        document.body.style.overflow = 'auto'; 
+                    }, 800);
+                    
+                } else {
+                    width += 1.5; // Kecepatan loading
+                    progress.style.width = width + '%';
+                }
+            }, 30);
+
+            // Matikan scroll saat loading
+            document.body.style.overflow = 'hidden';
+        });
+    </script>
+
+</body>
+</html>
